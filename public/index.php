@@ -1,8 +1,10 @@
 <?php
 
+use Nyholm\Psr7\Response;
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Nyholm\Psr7Server\ServerRequestCreator;
 use Psr\Container\ContainerInterface;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 require __DIR__ . '/../vendor/autoload.php';
@@ -49,6 +51,7 @@ $container = require __DIR__ . '/../config/dependencias.php';
 /** @var RequestHandlerInterface $controllerInstance */
 $controllerInstance = $container->get($controllerClass);
 
+/** @var ResponseInterface|Response $response */
 $response = $controllerInstance->handle($serverRequest);
 
 foreach ($response->getHeaders() as $header => $valores) {

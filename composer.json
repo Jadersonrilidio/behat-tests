@@ -1,7 +1,7 @@
 {
   "autoload": {
     "psr-4": {
-        "Alura\\Armazenamento\\": "src/"
+      "Alura\\Armazenamento\\": "src/"
     }
   },
   "require": {
@@ -13,5 +13,18 @@
     "doctrine/orm": "^2.14",
     "php-di/php-di": "^6.0",
     "symfony/cache": "^6.2"
+  },
+  "require-dev": {
+    "behat/behat": "^3.14",
+    "friends-of-behat/mink-extension": "^2.7",
+    "behat/mink": "^1.11",
+    "behat/mink-goutte-driver": "^2.0"
+  },
+  "scripts": {
+    "serve": [
+      "Composer\\Config::disableProcessTimeout",
+      "php -S 0.0.0.0:8080 -t public"
+    ],
+    "behat": "vendor/bin/behat"
   }
 }

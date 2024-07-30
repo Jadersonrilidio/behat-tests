@@ -1,0 +1,27 @@
+default:
+  suites:
+    default:
+      contexts:
+        - FormacaoEmMemoriaContext
+        - FormacaoNoBancoContext
+    unit:
+      contexts:
+        - FormacaoEmMemoriaContext
+      filters:
+        tags: unit
+    integration:
+      contexts:
+        - FormacaoNoBancoContext
+      filters:
+        tags: integration
+    e2e:
+      contexts:
+        - Behat\MinkExtension\Context\MinkContext
+      filters:
+        tags: e2e
+  extensions:
+    Behat\MinkExtension:
+      base_url:  'http://localhost:8080'
+      sessions:
+        default:
+          goutte: ~

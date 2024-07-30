@@ -1,0 +1,17 @@
+Feature: Register of Formations
+  Eu, como instrutor
+  Quero cadastrar formacoes
+  Para organizar meus cursos
+
+  Rules:
+  - Formacao precisa ter descricao
+  - Descricao precisa ter ao menos 2 palavras
+
+  Case: Cadastro de formacao com 1 palavra
+    When eu tentar criar uma formacao com a descricao "PHP"
+    Then eu vou ver a seguinte mensagem de erro "Descricao precisa ter pelo menos 2 palavras"
+
+  Case: Cadastro de formacao valida deve salvar no banco
+    Given que estou conectado ao banco de dados
+    When eu tentar criar uma nova formacao com a descricao "PHP na web"
+    Then se eu buscar no banco, devo encontrar essa formacao
